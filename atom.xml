@@ -2,44 +2,195 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Shu-Kuang.github.io</id>
     <title>Gridea</title>
-    <updated>2020-12-03T01:38:58.330Z</updated>
+    <updated>2020-12-03T02:19:00.447Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Shu-Kuang.github.io"/>
     <link rel="self" href="https://Shu-Kuang.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
     <logo>https://Shu-Kuang.github.io/images/avatar.png</logo>
     <icon>https://Shu-Kuang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://Shu-Kuang.github.io/post/hello-gridea/</id>
-        <link href="https://Shu-Kuang.github.io/post/hello-gridea/">
+        <title type="html"><![CDATA[ 2020.11.18小测题解]]></title>
+        <id>https://Shu-Kuang.github.io/post/vglHONZp6/</id>
+        <link href="https://Shu-Kuang.github.io/post/vglHONZp6/">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+        <updated>2020-12-03T01:42:02.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="题面"><a href="http://www.sjzezoj.com:9280/contest/16/problem/82">题面</a></h3>
+<h3 id="思路">思路</h3>
+<p>​		最长链类的问题，我们已经学过的有，处理一个点为根的时候他的最长链，可以是最长链或者最长链加次长链，这个题里放到了一整棵树里面，我们直观的考虑到一个点上面的一段最长路径也可能被统计到答案中，我们需要知道的就是这一段，当前为根的最长，次长，将这三个里挑选两个取最大值。</p>
+<p>​		以根节点处理出当前子树内的最长链次长链比较好求，关键在于上面，是一个换根dp常用的技巧，也就是在dfs2的时候，我们的f，u已经不是仅仅在u子树内最长链和次长链了，而是对于u所有能到达的最长链和次长链，所以我们利用他从哪个儿子转移过最长链次长链来避免重复进行更新，最后就是最长链+次长链+本身就足够了，细节不少，但是整体思路过程比较好。</p>
+<h3 id="代码">代码</h3>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define int long long
+inline int read() {
+    int r = 1, s = 0;
+    char ch = getchar();
+    while (ch &lt; '0' || ch &gt; '9') {
+        if (ch == '-')
+        r = -1;
+        ch = getchar();
+    }
+    while (ch &gt;= '0' &amp;&amp; ch &lt;= '9') {
+        s = s * 10 + ch - '0';
+        ch = getchar();
+    }
+    return r * s;
+}
+
+const int N = 1e6 + 10;
+
+struct Edge{
+    int nxt, to;
+}e[N&lt;&lt;1];
+int head[N], cnte;
+
+//处理向上最长链，向下最长链，次长链
+int n, q;
+int a[N], f[N], g[N], s[N][2], lim;
+//以x为根的最长链，次长链，最长链由哪个儿子转移，次长链由哪个儿子转移
+int ans[N];
+
+
+void add(int x, int y) {
+    e[++ cnte] = (Edge){head[x], y};
+    head[x] = cnte;
+} 
+
+void dfs(int u, int fath) {
+    f[u] = g[u] = s[u][0] = s[u][1] = 0;
+    for (int i = head[u];i;i = e[i].nxt) {
+        int y = e[i].to;
+        int z = a[y];
+        if (y == fath) continue;
+        dfs(y, u);
+        if (a[y] &gt; lim) continue;
+        if (f[y] + z &gt; f[u])
+            g[u] = f[u], f[u] = f[y] + z, s[u][1] = s[u][0], s[u][0] = y;
+        else if (f[y] + z &gt; g[u]) 
+                g[u] = f[y] + z, s[u][1] = y;
+    }
+} 
+
+void dfs2(int u, int fath) {
+    //o避免重复
+	//如果当前点是最长链，那么我的值就是次长链
+	//如果当前点是次长链，那么我的值就是最长链
+    int o = s[fath][0] == u ? g[fath] : f[fath];
+    if (a[fath] &lt;= lim) {
+        if (o + a[fath] &gt; f[u])
+            g[u] = f[u], f[u] = a[fath] + o, s[u][1] = s[u][0], s[u][0] = fath;
+        else if (o + a[fath] &gt; g[u])
+                g[u] = o + a[fath], s[u][1] = fath;
+    }
+    if (a[u] &lt;= lim &amp;&amp; f[u] + g[u] + a[u] &gt; 0)
+    ans[u] = f[u] + g[u] + a[u];
+    else ans[u] = 0;
+    for (int i = head[u];i;i = e[i].nxt) {
+        int y = e[i].to;
+        if (y == fath) continue;
+        dfs2(y, u);
+    }
+}
+
+signed main() {
+    n = read(), q = read();
+    for (int i = 1;i &lt;= n;++ i)
+    a[i] = read();
+    for (int i = 1, u, v;i &lt; n;++ i) {
+        u = read();
+        v = read();
+        add (u, v);
+        add (v, u);
+    }
+    while (q --) {
+        lim = read();
+        dfs(1, 0);
+        dfs2(1, 0);
+        for (int i = 1;i &lt;= n;++ i)
+        printf(&quot;%lld &quot;, ans[i]);
+        puts(&quot; &quot;);
+    }
+    return 0;
+}
+
+</code></pre>
+<p><a href="http://www.sjzezoj.com:9280/contest/16/problem/83">题面</a></p>
+<h3 id="思路-2">思路</h3>
+<p>树状数组优化dp题。</p>
+<p>显然有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>暴力，设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">f_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>为前i个人的最大价值，显然有</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>i</mi></msub><mo>=</mo><mi>max</mi><mo>⁡</mo><mo>(</mo><msub><mi>f</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>f</mi><mi>j</mi></msub><mo>+</mo><mi>v</mi><mi>a</mi><msub><mi>l</mi><mi>i</mi></msub><mo>)</mo><mo>(</mo><mi>j</mi><mo>+</mo><msub><mi>t</mi><mi>j</mi></msub><mo>≤</mo><mi>i</mi><mo separator="true">,</mo><mi>i</mi><mo>−</mo><msub><mi>t</mi><mi>i</mi></msub><mo>≥</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f_i = \max(f_i, f_j + val_i) (j+t_j \leq i,i-t_i \geq j)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.922078em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.7859700000000001em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></span></p>
+<p>想要优化成<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>就需要<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>找出满足条件的转折点，我们可以先对第一条件进行排序，那么根据单调性第一个条件一定满足</p>
+<p>第二个条件利用树状数组插入所有符合当前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>条件的因为排序过所以具有单调性，然后每次只查询满足第二个条件的最大值转移即可。</p>
+<h3 id="代码-2">代码</h3>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+#define int long long
+inline int read() {
+    int r = 1, s = 0;
+    char ch = getchar();
+    while (ch &lt; '0' || ch &gt; '9') {
+        if (ch == '-')
+        r = -1;
+        ch = getchar();
+    }
+    while (ch &gt;= '0' &amp;&amp; ch &lt;= '9') {
+        s = s * 10 + ch - '0';
+        ch = getchar();
+    }
+    return r * s;
+}
+
+const int N = 1e6 + 10;
+int n, a[N], b[N], w[N];
+int f[N], tr[N&lt;&lt;1], P = 1;
+
+struct Edge {
+    int id, x;
+    bool operator &lt; (const Edge &amp; a) const {
+        return x &lt; a.x;
+    }
+}m[N];
+
+void change(int x, int v) {
+    while (x &lt;= n) {
+        tr[x] = max(tr[x], v);
+        x += (x &amp; -x);
+    }    
+}
+
+int get(int x) {
+    int res = 0;
+    while (x) {
+        res = max(res, tr[x]);
+        x -= (x &amp; -x);
+    }
+    return res;
+}
+
+
+signed main() {
+    n = read();
+    for (int i = 1;i &lt;= n;++ i)
+    a[i] = read();
+    for (int i = 1;i &lt;= n;++ i) {
+        b[i] = read(), w[i] = a[i] * b[i];
+        m[i].id = i, m[i].x = i + a[i];
+    }
+    int ans = 0;
+    sort(m + 1,m + 1 + n);
+    for (int i = 1;i &lt;= n;++ i) {
+         while(P &lt;= n &amp;&amp; m[P].x &lt;= i)
+            change(m[P].id, w[m[P].id]), P ++;
+        if (i - a[i] &gt; 0) w[i] += get(i - a[i]);
+        ans = max(ans, w[i]);
+    }
+    cout &lt;&lt; ans;
+}
+</code></pre>
 ]]></content>
     </entry>
 </feed>
