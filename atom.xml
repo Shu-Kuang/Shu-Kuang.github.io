@@ -2,13 +2,44 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Shu-Kuang.github.io</id>
     <title>ShuKuang&apos;s blog</title>
-    <updated>2021-10-02T01:22:04.241Z</updated>
+    <updated>2021-10-03T13:02:08.552Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Shu-Kuang.github.io"/>
     <link rel="self" href="https://Shu-Kuang.github.io/atom.xml"/>
     <logo>https://Shu-Kuang.github.io/images/avatar.png</logo>
     <icon>https://Shu-Kuang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, ShuKuang&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[字符串学习笔记]]></title>
+        <id>https://Shu-Kuang.github.io/post/W4FJtA9xZ/</id>
+        <link href="https://Shu-Kuang.github.io/post/W4FJtA9xZ/">
+        </link>
+        <updated>2021-10-03T13:00:12.000Z</updated>
+        <content type="html"><![CDATA[<p>今日是字符串场。</p>
+<p>字符串由于平常不会刻意去练，导致算法学了总是会忘，忘了再学，学了再忘。</p>
+<h3 id="kmp">KMP</h3>
+<h4 id="普通kmp">普通KMP</h4>
+<p>考虑对于模式串构建失配数组next表示到目前位置最长的border长度。</p>
+<p>构建时也是对于每个指针跳border,找到先前的最长前缀和当前去掉最后一位的后缀相等，也就是先前的border，一直跳即可。</p>
+<p>进行匹配也就是对于匹配上的若干串，前缀和后缀相当了，直接把指针移到后缀来加速匹配过程。</p>
+<h4 id="扩展kmp">扩展KMP</h4>
+<p>也叫做<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span></span></span></span>函数。</p>
+<h3 id="ac自动机">AC自动机</h3>
+<h4 id="ac自动机的构建">AC自动机的构建</h4>
+<p>在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mi>r</mi><mi>i</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Trie</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span></span></span></span>树上构建每个节点的失配指针。</p>
+<p>对于一个节点，他的失配指针一定是从跟走到一个节点，把他理解为前缀，一定和当前这个节点所在的一个分支，从底向上看是一个后缀，</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">fail</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>指针可以理解为是最长的这个后缀与这个指针指向的那个节点的前缀相同。</p>
+<p>构建时进行优化可以构建<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mi>r</mi><mi>i</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Trie</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span></span></span></span>图。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mi>r</mi><mi>i</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Trie</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span></span></span></span>图的优化相当于，你在走<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">fail</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>指针时还要走他的儿子，干脆直接把这个边连向他<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">fail</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>指针的儿子。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">AC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>自动机的核心则是跟据失配指针来快速遍历<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mi>r</mi><mi>i</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Trie</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span></span></span></span>图中有用的节点。</p>
+<h4 id="fail树">fail树</h4>
+<p>对于<a href="https://www.luogu.com.cn/problem/P5357">这道题</a>我们只需要统计每个模式串出现的次数时，并不需要走到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mi>r</mi><mi>i</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Trie</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span></span></span></span>树上的其他节点。</p>
+<p>对于原先<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">AC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>自动机的暴力匹配，我们是遍历每一个点，不断遍历他的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">fail</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>边，遍历到的地方都加，最后只需要知道模式串遍历了几次。</p>
+<p>这样显然不太优。</p>
+<p>我们倒不如从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mi>r</mi><mi>i</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Trie</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span></span></span></span>图上的每一个模式串结尾开始，反向沿着<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">fail</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>边遍历，能跳到的每一个文本串的点都代表出现一次，在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">fail</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>树上每个节点子树的和就是这个点出现的所有次数，直接统计贡献就行了。</p>
+<h3 id="manacher">Manacher</h3>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[20210926]]></title>
         <id>https://Shu-Kuang.github.io/post/5emC1-pWb/</id>
@@ -687,13 +718,7 @@ nS^ 2=&amp; \sum_{i=1}^n(x_i-\bar{x})^2\\
         <link href="https://Shu-Kuang.github.io/post/8VopIb62I/">
         </link>
         <updated>2021-08-13T12:32:35.000Z</updated>
-        <content type="html"><![CDATA[<hr>
-<p>title: 常见错误总结<br>
-date: 2021-08-13 19:02:52<br>
-tags:<br>
-mathjax: true</p>
-<hr>
-<p>持续更新中~</p>
+        <content type="html"><![CDATA[<p>持续更新中~</p>
 <p>出处：<a href="https://www.luogu.com.cn/user/197717">Orz</a></p>
 <h4 id="1-死循环不出结果">1. 死循环/不出结果</h4>
 <ul>
@@ -724,6 +749,7 @@ mathjax: true</p>
 <li>BST 查找右子树排名 <code>k</code> 时减去左子树的 <code>siz</code> 后没有 +1。</li>
 <li>网络流初始时 <code>cnt</code> 未赋为 <code>1</code>。</li>
 <li>没有删调试语句。</li>
+<li>siz[v] += siz[u]</li>
 </ul>
 <h4 id="3-re">3. RE</h4>
 <ul>
@@ -731,39 +757,6 @@ mathjax: true</p>
 <li>线段树处理不好的话需要开 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span> 倍空间。</li>
 <li>洛谷日爆。</li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[一双木棋]]></title>
-        <id>https://Shu-Kuang.github.io/post/AvTKrl4WW/</id>
-        <link href="https://Shu-Kuang.github.io/post/AvTKrl4WW/">
-        </link>
-        <updated>2021-08-12T03:48:20.000Z</updated>
-        <content type="html"><![CDATA[<p>我也能写<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>i</mi><mi>n</mi><mo>−</mo><mi>M</mi><mi>a</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">Min-Max</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span></span></span></span>对抗搜索辣</p>
-<p>我们发现对于一个棋盘，他最终的形态一定是一个阶梯状，大概类似长这样</p>
-<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/08/12/u6YvnNRpJfFAWze.png" alt="image-20210812113420539" loading="lazy"></figure>
-<p>可以在这些上面放棋子。</p>
-<p>那么显然一行的状态只需要这一行有多少棋子就可以表示</p>
-<p>那么我们可以用一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">vector</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>存储每一行的数量，那么每个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">vector</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>都是一个状态。</p>
-<p>存到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">map</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span></span></span></span>里记忆化即可。</p>
-<p>我们发现总共状态数才几十万，直接搜出来就行了。</p>
-<p>这题中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>≤</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">n,m \le 10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8304100000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span>，所以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">vector</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>的比较可以当作常数。</p>
-<p>不想用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">vector</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>存储状态，追求快一点可以将所有状态<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>a</mi><mi>s</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">Hash</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">h</span></span></span></span>下来，或者直接开<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>o</mi><mi>n</mi><mi>g</mi><mtext> </mtext><mi>l</mi><mi>o</mi><mi>n</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">long\ long</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mspace"> </span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span></span></span></span>存下来都可以。</p>
-<p>对抗搜索就记录一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>u</mi><mi>r</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">turn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">n</span></span></span></span>,然后选择答案初始是正无穷还是负无穷，枚举每次放的点记录权值就可以了。</p>
-<pre><code class="language-cpp">int dfs(int turn) {
-    if (mp.find(h) != mp.end()) return mp[h];
-    int ans = turn ? -INF : INF;
-    for (int i = 0; i &lt; n; ++ i) {
-        if ((i == 0 || h[i - 1] &gt; h[i]) &amp;&amp; h[i] &lt; m) {
-            ++ h[i];
-            if (turn) ans = max(ans, dfs(0) + a[i + 1][h[i]]);
-            else ans = min(ans, dfs(1) - b[i + 1][h[i]]);
-            -- h[i];
-        }
-    }
-    return mp[h] = ans;
-}
-</code></pre>
 ]]></content>
     </entry>
 </feed>
