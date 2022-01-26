@@ -2056,14 +2056,18 @@ p > code {
     }body {
       background-color: #eee;
     }.header {
-        width: 960px;
+        width: 1250px;
         margin: 0 auto;
       }
 
       .main-continer {
-        width: 960px;
+        width: 1250px;
         margin: 0 auto;
       }
+    
+    .post-body {
+      font-size: 16px !important
+    }
     body {
       color: #555;
     }
@@ -2177,8 +2181,6 @@ p > code {
     }
     .mist .site-title i {
       background: #FFFFFF66;
-    }.box-shadow-wrapper {
-      box-shadow: none !important;
     }body {
       cursor: default;
     }a {
