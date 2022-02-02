@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://Shu-Kuang.github.io</id>
+    <id>http://localhost:4000</id>
     <title>ShuKuang&apos;s blog</title>
-    <updated>2022-02-02T10:48:36.996Z</updated>
+    <updated>2022-02-02T10:50:32.812Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://Shu-Kuang.github.io"/>
-    <link rel="self" href="https://Shu-Kuang.github.io/atom.xml"/>
-    <logo>https://Shu-Kuang.github.io/images/avatar.png</logo>
-    <icon>https://Shu-Kuang.github.io/favicon.ico</icon>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2022, ShuKuang&apos;s blog</rights>
     <entry>
         <title type="html"><![CDATA[多项式&生成函数学习笔记]]></title>
-        <id>https://Shu-Kuang.github.io/post/O0V-bmkzS/</id>
-        <link href="https://Shu-Kuang.github.io/post/O0V-bmkzS/">
+        <id>http://localhost:4000/post/O0V-bmkzS/</id>
+        <link href="http://localhost:4000/post/O0V-bmkzS/">
         </link>
         <updated>2022-02-02T10:47:45.000Z</updated>
         <content type="html"><![CDATA[<h2 id="前言">前言</h2>
@@ -262,8 +262,8 @@ s76,-59,76,-59s76,-60,76,-60z M1001 80H40000v40H1012z'/></svg></span></span></sp
     </entry>
     <entry>
         <title type="html"><![CDATA[数论学习笔记]]></title>
-        <id>https://Shu-Kuang.github.io/post/W1QoxAEBP/</id>
-        <link href="https://Shu-Kuang.github.io/post/W1QoxAEBP/">
+        <id>http://localhost:4000/post/W1QoxAEBP/</id>
+        <link href="http://localhost:4000/post/W1QoxAEBP/">
         </link>
         <updated>2022-02-02T10:47:27.000Z</updated>
         <content type="html"><![CDATA[<h2 id="前言">前言</h2>
@@ -499,8 +499,8 @@ g&amp;=g*\epsilon\\
     </entry>
     <entry>
         <title type="html"><![CDATA[组合数学学习笔记]]></title>
-        <id>https://Shu-Kuang.github.io/post/_-rlxjf6t/</id>
-        <link href="https://Shu-Kuang.github.io/post/_-rlxjf6t/">
+        <id>http://localhost:4000/post/_-rlxjf6t/</id>
+        <link href="http://localhost:4000/post/_-rlxjf6t/">
         </link>
         <updated>2022-02-02T10:47:02.000Z</updated>
         <content type="html"><![CDATA[<h3 id="容斥原理">容斥原理</h3>
@@ -739,8 +739,8 @@ m^n&amp;=\sum_{k=0}^m\binom{m}{k}{n \brace k}k!\\
     </entry>
     <entry>
         <title type="html"><![CDATA[2022.1.18]]></title>
-        <id>https://Shu-Kuang.github.io/post/x-sr6s-ze/</id>
-        <link href="https://Shu-Kuang.github.io/post/x-sr6s-ze/">
+        <id>http://localhost:4000/post/x-sr6s-ze/</id>
+        <link href="http://localhost:4000/post/x-sr6s-ze/">
         </link>
         <updated>2022-01-23T07:46:06.000Z</updated>
         <content type="html"><![CDATA[<p>So hard ！</p>
